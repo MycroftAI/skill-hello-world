@@ -1,4 +1,4 @@
-## Hello World Skill
+## Hello World
 Introductory Skill so that Skill Authors can see how a Mycroft Skill is put together
 
 ## Description 
