@@ -15,9 +15,9 @@ If you want to write **Skills** for Mycroft, Documentation is available:
 * [Mycroft Message Bus](https://mycroft.ai/documentation/message-bus/)
 
 ## Examples 
-* ""Hello world""
-* ""How are you?""
-* ""Thank you""
+* "Hello world"
+* "How are you?"
+* "Thank you"
 
 ## Credits 
 Mycroft AI (@MycroftAI)
