@@ -23,7 +23,7 @@ If you want to write **Skills** for Mycroft, Documentation is available:
 Mycroft AI (@MycroftAI)
 
 ## Category
-**Daily**
+**Configuration**
 
 ## Tags
 #helloworld
