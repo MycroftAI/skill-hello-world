@@ -24,7 +24,7 @@ class HelloWorldSkill(MycroftSkill):
         It is often used to declare variables or perform setup actions, however
         it cannot utilise MycroftSkill methods as the class does not yet exist.
         """
-        MycroftSkill.__init__(self)
+        super().__init__()
         self.learning = True
 
     def initialize(self):
