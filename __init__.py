@@ -16,41 +16,42 @@
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
 from adapt.intent import IntentBuilder
-
-from mycroft.skills.core import MycroftSkill
-from mycroft.util.log import getLogger
-
-__author__ = 'eward'
-
-LOGGER = getLogger(__name__)
-
+from mycroft import MycroftSkill, intent_file_handler, intent_handler
 
 class HelloWorldSkill(MycroftSkill):
     def __init__(self):
-        super(HelloWorldSkill, self).__init__(name="HelloWorldSkill")
+        """ The __init__ method is called when the Skill is first constructed.
+        It is often used to declare variables or perform setup actions, however
+        it cannot utilise MycroftSkill methods as the class does not yet exist.
+        """
+        super().__init__()
+        self.learning = True
 
     def initialize(self):
-        thank_you_intent = IntentBuilder("ThankYouIntent"). \
-            require("ThankYouKeyword").build()
-        self.register_intent(thank_you_intent, self.handle_thank_you_intent)
+        """ Perform any final setup needed for the skill here.
+        This function is invoked after the skill is fully constructed and
+        registered with the system. Intents will be registered and Skill
+        settings will be available."""
+        my_setting = self.settings.get('my_setting')
 
-        how_are_you_intent = IntentBuilder("HowAreYouIntent"). \
-            require("HowAreYouKeyword").build()
-        self.register_intent(how_are_you_intent,
-                             self.handle_how_are_you_intent)
-
-        hello_world_intent = IntentBuilder("HelloWorldIntent"). \
-            require("HelloWorldKeyword").build()
-        self.register_intent(hello_world_intent,
-                             self.handle_hello_world_intent)
-
+    @intent_handler(IntentBuilder('ThankYouIntent').require('ThankYouKeyword'))
     def handle_thank_you_intent(self, message):
+        """ This is an Adapt intent handler, it is triggered by a keyword."""
         self.speak_dialog("welcome")
 
+    @intent_file_handler('HowAreYou.intent')
     def handle_how_are_you_intent(self, message):
+        """ This is a Padatious intent handler.
+        It is triggered using a list of sample phrases."""
         self.speak_dialog("how.are.you")
 
+    @intent_handler(IntentBuilder('HelloWorldIntent')
+                    .require('HelloWorldKeyword'))
     def handle_hello_world_intent(self, message):
+        """ Skills can log useful information. These will appear in the CLI and
+        the skills.log file."""
+        self.log.info("There are five types of log messages: "
+                      "info, debug, warning, error, and exception.")
         self.speak_dialog("hello.world")
 
     def stop(self):
