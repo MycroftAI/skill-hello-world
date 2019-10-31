@@ -16,7 +16,7 @@
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
 from adapt.intent import IntentBuilder
-from mycroft import intent_handler
+from mycroft import MycroftSkill, intent_handler
 
 class HelloWorldSkill(MycroftSkill):
     def __init__(self):
