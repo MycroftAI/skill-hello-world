@@ -39,7 +39,7 @@ class HelloWorldSkill(MycroftSkill):
         """ This is an Adapt intent handler, it is triggered by a keyword."""
         self.speak_dialog("welcome")
 
-    @intent_file_handler('HowAreYou.intent')
+    @intent_handler('HowAreYou.intent')
     def handle_how_are_you_intent(self, message):
         """ This is a Padatious intent handler.
         It is triggered using a list of sample phrases."""
